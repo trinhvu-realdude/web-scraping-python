@@ -6,7 +6,7 @@ import json
 BASE_URL = "https://www.mauritius-villa.com"
 
 def get_villa(url: str):
-    print(f"Start - Parsing the villa {url}")
+    print(f"Start - Parse the villa ::: {url}")
 
     soup = BeautifulSoup(requests.get(url).content, "html.parser")
 
@@ -49,15 +49,15 @@ def get_villa(url: str):
     data = soup.select_one("script:last-child").text.replace("\n", "").replace("  ", "").strip()
     price = data[data.index('"price":') + len('"price":'): data.index(',', data.index('"price":'))]
 
-    print("Name:", name)
-    print("Price per night:", price)
-    print("Address:", address)
-    print("Max Guests:", max_guests)
-    print("Number of Bedrooms:", number_of_bedrooms)
-    print("Properties:", list_of_properties)
-    print("Distances To:", distances_to)
+    print("-> Name:", name)
+    print("-> Price per night:", price)
+    print("-> Address:", address)
+    print("-> Max Guests:", max_guests)
+    print("-> Number of Bedrooms:", number_of_bedrooms)
+    print("-> Properties:", list_of_properties)
+    print("-> Distances To:", distances_to)
 
-    print(f"End - Parsing the villa {url}")
+    print(f"End - Parse the villa ::: {url}")
 
     return {
         "Name": name,
@@ -73,14 +73,13 @@ def get_villa(url: str):
 
 
 def get_list_of_villas():
-    print("Get list of villas -----")
     villas = set()
 
     i = 0
     while i <= 10:
         url = f"{BASE_URL}/en/find?page={i}"
 
-        print(f"Start - Parsing page {url}")
+        print(f"Start - Parse page ::: {url}")
 
         soup = BeautifulSoup(requests.get(url).content, "html.parser")
 
@@ -89,7 +88,7 @@ def get_list_of_villas():
 
         i = i + 1
 
-        print(f"End - Parsing page {url}")
+        print(f"End - Parse page ::: {url}")
 
     return villas
 

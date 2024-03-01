@@ -1,0 +1,16 @@
+https://www.mauritius-villa.com/ - Done
+https://www.villanovo.com - Processing
+https://smart-villas-mauritius.com/ - Selenium
+https://www.lexpressproperty.com/
+https://www.lecollectionist.com
+https://www.bookmauritius-villas.com/
+https://beachhousesmauritius.com/
+
+
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.by import By
+
+browser = webdriver.Chrome(service=Service(executable_path="F:/usr/bin/chromedriver.exe"))
+
+browser.get(BASE_URL)
